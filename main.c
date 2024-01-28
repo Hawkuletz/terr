@@ -198,7 +198,6 @@ static INT_PTR CALLBACK MainDlgProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPAR
                  */
                 case IDOK:
 					doit(hwndDlg);
-                    EndDialog(hwndDlg, TRUE);
                     return TRUE;
             }
             break;
