@@ -148,16 +148,21 @@ void init_lb(HWND hDlg)
 	ListBox_AddString(lbh,L"Error");
 	ListBox_AddString(lbh,L"Hand");
 
+	/* select stop by default */
+	ListBox_SetCurSel(lbh,5);
+
 	lbh=GetDlgItem(hDlg,SL_BTNS);
 	ListBox_AddString(lbh,L"ABORT RETRY IGNORE");
 	ListBox_AddString(lbh,L"CANCEL RETRY CONTINUE");
 	ListBox_AddString(lbh,L"HELP");
 	ListBox_AddString(lbh,L"OK");
-	ListBox_AddString(lbh,L"OKCANCEL");
-	ListBox_AddString(lbh,L"RETRYCANCEL");
-	ListBox_AddString(lbh,L"YESNO");
-	ListBox_AddString(lbh,L"YESNOCANCEL");
+	ListBox_AddString(lbh,L"OK CANCEL");
+	ListBox_AddString(lbh,L"RETRY CANCEL");
+	ListBox_AddString(lbh,L"YES NO");
+	ListBox_AddString(lbh,L"YES NO CANCEL");
 
+	/* selecct OK by default */
+	ListBox_SetCurSel(lbh,3);
 }
 
 /****************************************************************************
