@@ -22,6 +22,7 @@ FONT 8, "MS Shell Dlg", 0, 0, 1
   CONTROL "Message:", 4006, "Static", SS_RIGHT|WS_GROUP, 4, 48, 30, 8
   CONTROL "Buttons", 4007, "Static", SS_CENTER|WS_GROUP, 36, 80, 30, 8
   CONTROL "Icon", 4008, "Static", SS_CENTER|WS_GROUP, 152, 80, 30, 8
+  CONTROL "Also Help", CHK_HELP, "Button", BS_AUTOCHECKBOX|WS_TABSTOP, 4, 180, 48, 10
 }
 
 IDR_ICO_MAIN ICON "hand3.ico"

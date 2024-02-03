@@ -100,7 +100,7 @@ void doit(HWND hDlg)
 	wchar_t *title;
 
 	UINT miarr[]={MB_ICONEXCLAMATION,MB_ICONWARNING,MB_ICONINFORMATION,MB_ICONASTERISK,MB_ICONQUESTION,MB_ICONSTOP,MB_ICONERROR,MB_ICONHAND};
-	UINT mbarr[]={MB_ABORTRETRYIGNORE,MB_CANCELTRYCONTINUE,MB_HELP,MB_OK,MB_OKCANCEL,MB_RETRYCANCEL,MB_YESNO,MB_YESNOCANCEL};
+	UINT mbarr[]={MB_ABORTRETRYIGNORE,MB_CANCELTRYCONTINUE,MB_OK,MB_OKCANCEL,MB_RETRYCANCEL,MB_YESNO,MB_YESNOCANCEL};
 
 	UINT mbflags=0;
 
@@ -123,14 +123,20 @@ void doit(HWND hDlg)
 	/* alloc check */
 	if(msg==NULL || title==NULL) return;
 
+	/* get title and message */
 	GetDlgItemText(hDlg,ED_TITLU,title,tlen);
 	GetDlgItemText(hDlg,ED_MSG,msg,mlen);
 
+	/* get buttons and icon */
 	si=SendDlgItemMessage(hDlg,SL_ICON,LB_GETCURSEL,0,0);
 	sb=SendDlgItemMessage(hDlg,SL_BTNS,LB_GETCURSEL,0,0);
 
-	if(si>=0 && si<8) mbflags|=miarr[si];
-	if(sb>=0 && sb<8) mbflags|=mbarr[sb];
+	if(si>=0 && si<(int)NELEMS(miarr)) mbflags|=miarr[si];
+	if(sb>=0 && sb<(int)NELEMS(mbarr)) mbflags|=mbarr[sb];
+
+	/* help button is separate - get checkbox */
+	if(SendDlgItemMessage(hDlg,CHK_HELP,BM_GETCHECK,0,0)==BST_CHECKED)
+		mbflags|=MB_HELP;
 
 	MessageBox(hDlg,msg,title,mbflags);
 
@@ -154,7 +160,7 @@ void init_lb(HWND hDlg)
 	lbh=GetDlgItem(hDlg,SL_BTNS);
 	ListBox_AddString(lbh,L"ABORT RETRY IGNORE");
 	ListBox_AddString(lbh,L"CANCEL RETRY CONTINUE");
-	ListBox_AddString(lbh,L"HELP");
+//	ListBox_AddString(lbh,L"HELP");
 	ListBox_AddString(lbh,L"OK");
 	ListBox_AddString(lbh,L"OK CANCEL");
 	ListBox_AddString(lbh,L"RETRY CANCEL");

@@ -6,3 +6,4 @@
 #define ED_MSG  4002
 #define SL_ICON  4003
 #define SL_BTNS  4004
+#define CHK_HELP  4009
