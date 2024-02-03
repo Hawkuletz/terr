@@ -11,3 +11,4 @@ Icon is a bit misleading, represents type of MessageBox as well as informational
 Having Pelles C installed the program can be either opened as a project and built from there or with bld.bat from a "Pelles C Command Prompt"
 
 In addition, bld_4.bat allows building from NT4 with Pelles 4 installed. bld_4.bat calls povars32.bat from Pelles C default install directory.
+(note: Pelles C version 4 can be downloaded using Internet Archive Wayback machine)
